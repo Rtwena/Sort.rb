@@ -1,43 +1,31 @@
-require 'pry'
-array = [6, 5, 2, 4, 3, 1, 'a', 'c', 'b']
+array = [6, 5, 'b', 2, 4, 3, 1, 'a']
+str_array = []
+def split_array (array, str_array)
+	array.each_with_index{|value, index|
+		if value.class == String
+			str_array << array.delete_at(index)
+		end
+	}
+end
 
 def sort(array, rightside, leftside)
 	array.length.times do
-		if array[rightside].class == Fixnum && array[leftside].class == Fixnum
-			if array[rightside] < array[leftside]
-				temp = array[leftside]
-				array[leftside] = array[rightside]
-				array[rightside] = temp
+		if array[rightside] < array[leftside]
+			temp = array[leftside]
+			array[leftside] = array[rightside]
+			array[rightside] = temp
 
-				sort(array, rightside+1, leftside+1) if array.length != rightside+1			
-			elsif array.length != rightside+1
-				sort(array, rightside+1, leftside+1)
-			end
+			sort(array, rightside+1, leftside+1) if array.length != rightside+1			
+		elsif array.length != rightside+1
+			sort(array, rightside+1, leftside+1)
 		end
-
-		if array[rightside].class == String && array[leftside].class == String
-			puts 'hi'
-			if array[rightside] < array[leftside]
-				temp = array[leftside]
-				array[leftside] = array[rightside]
-				array[rightside] = temp
-
-				sort(array, rightside+1, leftside+1) if array.length != rightside+1			
-			elsif array.length != rightside+1
-				sort(array, rightside+1, leftside+1)
-			end
-		end
-		sort(array, rightside+1, leftside+1) if array.length < rightside+1
 	end
 end
 
-sort(array, 1, 0)	
+split_array(array, str_array)
 
+sort(array, 1, 0)
+sort(str_array, 1, 0)	
+
+array << str_array
 puts array
-
-# if array[rightside].class == String && array[leftside].class == String
-# 					if array[rightside] < array[leftside]
-# 					temp = array[leftside]
-# 					array[leftside] = array[rightside]
-# 					array[rightside] = temp
-# 				end
