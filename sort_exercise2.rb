@@ -1,4 +1,4 @@
-array = [6, 5, 'b', 2, 4, 3, 1, 'a']
+array = [6, 5, 'b', 1, 2, 4, 3, 1, 'a']
 str_array = []
 
 def split_array (array, str_array)
