@@ -35,4 +35,4 @@ sort(array, rightside, leftside)
 sort(str_array, rightside, leftside)	
 
 array << str_array
-puts array 
+puts array
