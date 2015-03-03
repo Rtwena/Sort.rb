@@ -1,13 +1,16 @@
-array = ['g', 6, 5, 2,'string', 5,6,7,8]
+array = ['g', 'a', 6, 5.5, 2,'string', 5,6,7,8]
 str_array = %w{fancy way of making string arrays sure are fancy!}
 #starting indexes
 rightside = 1
 leftside = 0
 
 def split_array (array, str_array)
-  array.each_with_index do |value, index|
-    str_array << array.delete_at(index) if value.class == String
+  array.each do |value|
+    if value.class == String
+      str_array << value
+    end
   end
+  array.delete_if {|value| value.class == String}
 end
 
 def sort(array, rightside, leftside)
